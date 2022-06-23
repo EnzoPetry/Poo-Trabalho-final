@@ -23,6 +23,7 @@ public class Barco extends Veiculo {
     public void acelerar() {
         System.out.println("O barco acelerou");
     }
+
     @Override
     public void mostrarDetalhes() {
         System.out.printf("O barco %s, ano %d, produzido pela %s (%s) utiliza %d velas e possui capacidade para %d pessoas.\n",

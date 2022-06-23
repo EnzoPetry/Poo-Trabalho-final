@@ -10,6 +10,10 @@ public class Aluno extends Pessoa {
     private float altura;
     private float peso;
 
+    public Aluno () {
+        this.dataMatricula = new Date();
+    }
+
     public String getCodMatricula() {
         return codMatricula;
     }

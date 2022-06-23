@@ -18,6 +18,9 @@ public class Turma {
 
     public Turma() {
         this.listaPresenca = new HashMap<>();
+        this.horaAula = new Date();
+        this.dataInicial = new Date();
+        this.dataFinal = new Date();
     }
 
     public Aluno getMonitor() {
@@ -93,7 +96,13 @@ public class Turma {
     }
 
     public void addAlunoTurma(String matriculaAluno) {
-        this.getListaPresenca().put(matriculaAluno, 0);
+        if (this.getListaPresenca().containsKey(matriculaAluno)) {
+            System.out.println("Aluno já está vinculado a turma.");
+        } else {
+            this.getListaPresenca().put(matriculaAluno, 0);
+
+            System.out.println("Aluno adicionado à turma com sucesso");
+        }
     }
 
     @Override

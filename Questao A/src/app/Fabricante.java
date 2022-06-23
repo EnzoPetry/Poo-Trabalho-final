@@ -19,6 +19,4 @@ public class Fabricante {
     public void setPaisDeOrigem(String paisDeOrigem) {
         this.paisDeOrigem = paisDeOrigem;
     }
-
-
 }

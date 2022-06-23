@@ -186,7 +186,7 @@ public class Main {
 
                     do {
                         try {
-                            System.out.print("Digite a altura do aluno: ");
+                            System.out.print("Digite a altura do aluno (Ex.: 1.70): ");
 
                             altura = Float.parseFloat(leitor.readLine());
 
@@ -342,6 +342,9 @@ public class Main {
                     turma.setMonitor(aluno);
                     turma.setInstrutor(instrutor);
 
+                    // Registra o aluno monitor a turma
+                    turma.addAlunoTurma(aluno.getCodMatricula());
+
                     turmas.add(turma);
                     System.out.println("Turma cadastrada com sucesso.");
                     break;
@@ -359,7 +362,6 @@ public class Main {
                         if ((turmas.get(indiceTurma).getListaPresenca().size() + 1) > turmas.get(indiceTurma).getQtdeAluno())
                             throw new Exception();
                         turmas.get(indiceTurma).addAlunoTurma(aluno.getCodMatricula());
-
                     } catch (Exception e) {
                         System.out.println("Turma ou aluno não encontrado (s).");
                     }
@@ -376,8 +378,12 @@ public class Main {
 
                     break;
                 case 6:
-                    for (Turma t : turmas) {
-                        System.out.println(t);
+                    if (turmas.size() == 0) {
+                        System.out.println("Nenhuma turma encontrada.");
+                    } else {
+                        for (int i = 0; i < turmas.size(); i++) {
+                            System.out.println("#" + (i + 1) + ": " + turmas.get(i));
+                        }
                     }
                     break;
                 case 7:
@@ -385,14 +391,18 @@ public class Main {
                         System.out.print("Digite o índice da instrutor: ");
                         indiceInstrutor = Integer.parseInt(leitor.readLine()) - 1;
 
-                        System.out.println(instrutores.get(indiceInstrutor));
+                        System.out.println("#" + (indiceInstrutor) + ": " + instrutores.get(indiceInstrutor));
                     } catch (Exception e) {
                         System.out.println("Instrutor não encontrado.");
                     }
                     break;
                 case 8:
-                    for (Instrutor i : instrutores) {
-                        System.out.println(i);
+                    if (instrutores.size() == 0) {
+                        System.out.println("Nenhum instrutor encontrado.");
+                    } else {
+                        for (int i = 0; i < instrutores.size(); i++) {
+                            System.out.println("#" + (i + 1) + ": " + instrutores.get(i));
+                        }
                     }
                     break;
                 case 9:
@@ -400,14 +410,18 @@ public class Main {
                         System.out.print("Digite o índice do aluno: ");
                         indiceAluno = Integer.parseInt(leitor.readLine()) - 1;
 
-                        System.out.println(alunos.get(indiceAluno));
+                        System.out.println("#" + (indiceAluno) + ": " + alunos.get(indiceAluno));
 
                     } catch (Exception e) {
                         System.out.println("Aluno não encontrado.");
                     }
                 case 10:
-                    for (Aluno a : alunos) {
-                        System.out.println(a);
+                    if (alunos.size() == 0) {
+                        System.out.println("Nenhum aluno encontrado.");
+                    } else {
+                        for (int i = 0; i < alunos.size(); i++) {
+                            System.out.println("#" + (i + 1) + ": " + alunos.get(i));
+                        }
                     }
                     break;
                 case 11:
@@ -423,6 +437,8 @@ public class Main {
                         int presencaAtual = turmas.get(indiceTurma).getListaPresenca().get(aluno.getCodMatricula()) + 1;
 
                         turmas.get(indiceTurma).getListaPresenca().replace(aluno.getCodMatricula(), presencaAtual);
+
+                        System.out.println("Presença registrada com sucesso.");
                     } catch (Exception e) {
                         System.out.println("Turma ou aluno não encontrado (s).");
                     }

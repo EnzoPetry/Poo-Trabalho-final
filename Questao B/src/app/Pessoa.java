@@ -10,6 +10,7 @@ public abstract class Pessoa {
 
     public Pessoa () {
         this.telefone = new ArrayList<>();
+        this.dataNascimento = new Date();
     }
 
     public String getNome() {
